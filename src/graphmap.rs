@@ -282,9 +282,9 @@ where
         n
     }
 
-    /// Return `true` if node `n` was removed.
-    ///
     /// Computes in **O(V)** time, due to the removal of edges with other nodes.
+    ///
+    /// Returns `true` if it did exist.
     pub fn remove_node(&mut self, n: N) -> bool {
         let links = match self.nodes.swap_remove(&n) {
             None => return false,
@@ -352,7 +352,7 @@ where
 
     /// Remove edge relation from a to b
     ///
-    /// Return `true` if it did exist.
+    /// Returns `true` if it did exist.
     fn remove_single_edge(&mut self, a: &N, b: &N, dir: CompactDirection) -> bool {
         match self.nodes.get_mut(a) {
             None => false,
